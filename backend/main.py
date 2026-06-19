@@ -15,8 +15,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# 요약 모델 초기화
-summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
+# 요약 모델 초기화 (경량 모델 - 약 500MB)
+summarizer = pipeline("summarization", model="facebook/bart-base")
 
 class TextRequest(BaseModel):
     text: str
@@ -30,7 +30,7 @@ class SummaryResponse(BaseModel):
 
 @app.get("/")
 async def root():
-    return {"message": "TEXT-HEILPER API에 오신 것을 환영합니다!", "status": "running"}
+    return {"message": "TEXT-HEILPER API에 오신 것을 환영합니다!", "status": "running", "model": "facebook/bart-base"}
 
 @app.post("/summarize", response_model=SummaryResponse)
 async def summarize(request: TextRequest):
