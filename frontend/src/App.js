@@ -89,7 +89,7 @@ function App() {
           <div className="output-section">
             <h2>📌 요약 결과</h2>
             <div className="summary-info">
-              <p>요약률: {(lengthRatio * 100).toFixed(1)}%</p>
+              <p>요약율: {(lengthRatio * 100).toFixed(1)}%</p>
             </div>
             <div className="summary-text">{summary}</div>
             <button onClick={handleCopy} className="btn btn-copy">
